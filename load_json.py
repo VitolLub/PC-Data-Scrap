@@ -2,7 +2,7 @@ from pymongo import MongoClient
 import json
 
 def connect_to_db():
-    db = MongoClient('mongodb+srv://vitol:vitol486070920@ebay.elcsu.mongodb.net/test?retryWrites=true&w=majority')
+    db = MongoClient('mongodb+srv://testuser21:testuser21@cluster0.vtlen.mongodb.net/test?retryWrites=true&w=majority')
     db = db['pc_scrap_data']
     collections = db['pc_scrap_data']
     return collections
@@ -17,7 +17,7 @@ def load_json():
         print(elem)
         print(type(elem))
         with open('data.json', 'w') as f:
-            json.dump(data, f)
+            json.dump(elem, f)
 
 
 

@@ -1,7 +1,6 @@
 import getpass
 from pymongo import MongoClient
 import psutil
-import cpuinfo
 # get all proccesses from WMI
 import wmi
 import platform
@@ -28,7 +27,7 @@ def get_memory_usage(i):
 
 # Press the green button in the gutter to run the script.
 def connect_to_db():
-    db = MongoClient('mongodb+srv://vitol:vitol486070920@ebay.elcsu.mongodb.net/test?retryWrites=true&w=majority')
+    db = MongoClient('mongodb+srv://testuser21:testuser21@cluster0.vtlen.mongodb.net/test?retryWrites=true&w=majority')
     db = db['pc_scrap_data']
     collections = db['pc_scrap_data']
     return collections
@@ -140,9 +139,12 @@ def parser_pc_data():
 
 
     collections = connect_to_db()
+    date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     data = {}
+
     data['Computer Name'] = platform.node()
+    data['date_scrap'] = date_time
     data['Login_sessions'] = {"Comouter name": platform.node(), "logged in User name": username, "Login time": time_1,
                               "Log off time": "", "Duration logged in": duration}
     data['Power_sessions'] = {"Computer Name": platform.node(), "Turned on time": time_1, "Turned off time": "",
